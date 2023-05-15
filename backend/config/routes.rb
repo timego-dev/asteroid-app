@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'neos/create'
   get 'neos/update'
   get 'neos/destroy'
+  get 'neos/:id/show'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
