@@ -35,3 +35,10 @@ module Backend
     config.generators.system_tests = nil
   end
 end
+
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    origins '*' # or specify domains here that are allowed to access your application
+    resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options]
+  end
+end
