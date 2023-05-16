@@ -142,7 +142,7 @@ export const HomePage: FC = () => {
     <>
       <Card>
         <CardHeader
-          title="Neos"
+          title={visibleFavorites ? "Favorite NEOs" : "NEOs"}
           action={
             <Stack spacing={2} direction="row" alignItems="center">
               <Button onClick={handleToggleVisibleFavorites}>
