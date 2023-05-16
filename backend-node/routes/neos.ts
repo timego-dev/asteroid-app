@@ -1,9 +1,10 @@
 import express from 'express';
 
-import { readAll } from '../controller/neo';
+import { read, readAll } from '../controller/neo';
 
 const router = express.Router();
 
 router.get('/', readAll);
+router.get('/:id', read);
 
 export default router;
