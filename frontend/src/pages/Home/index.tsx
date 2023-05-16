@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader } from '@mui/material';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
 import { DateRange, DateRangePicker } from '@mui/x-date-pickers-pro';
 import axios from 'axios';
 import { Dayjs } from 'dayjs';
@@ -21,13 +21,12 @@ export const HomePage: FC = () => {
         },
       })
       .then((res: any) => {
-        const data: any = Object.values(res.data.near_earth_objects).reduce(
-          (r: any, c: any) => {
-            r = [...r, ...c];
-            return r;
-          },
-          []
-        );
+        const data: any = Object.values(
+          res.data.neos.near_earth_objects
+        ).reduce((r: any, c: any) => {
+          r = [...r, ...c];
+          return r;
+        }, []);
 
         setNeos(data);
       })
@@ -38,6 +37,7 @@ export const HomePage: FC = () => {
     {
       field: 'name',
       headerName: 'Name',
+      width: 300,
     },
   ];
 
@@ -46,9 +46,13 @@ export const HomePage: FC = () => {
     console.log(value.map((item: Dayjs) => item?.toISOString()));
   };
 
+  const handleRowClick = (params: GridRowParams) => {
+    console.log(params);
+  };
+
   useEffect(() => {
     fetchData();
-  });
+  }, []);
 
   return (
     <>
@@ -70,11 +74,12 @@ export const HomePage: FC = () => {
             initialState={{
               pagination: {
                 paginationModel: {
-                  pageSize: 5,
+                  pageSize: 10,
                 },
               },
             }}
-            pageSizeOptions={[5]}
+            onRowClick={handleRowClick}
+            pageSizeOptions={[5, 10]}
             disableRowSelectionOnClick
           />
         </CardContent>
