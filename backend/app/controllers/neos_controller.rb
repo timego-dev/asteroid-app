@@ -13,7 +13,10 @@ class NeosController < ApplicationController
     response = Net::HTTP.get(uri)
     data = JSON.parse(response)
 
-    render json: data
+    render json: {
+        success: true
+        neos: data
+    }
   end
 
   def show
