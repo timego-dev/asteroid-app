@@ -34,6 +34,7 @@ export const DetailPage: FC = () => {
     if (id) {
       fetchData();
     }
+    // eslint-disable-next-line
   }, [id]);
 
   return neo ? (

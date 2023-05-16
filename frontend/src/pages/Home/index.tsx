@@ -7,12 +7,12 @@ import {
   IconButton,
   Stack,
 } from '@mui/material';
-import { DataGrid, GridColDef, GridRowParams } from '@mui/x-data-grid';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { GridRenderCellParams } from '@mui/x-data-grid/models/params/gridCellParams';
 import { DateRange, DateRangePicker } from '@mui/x-date-pickers-pro';
 import axios from 'axios';
 import { Dayjs } from 'dayjs';
-import { FC, MouseEvent, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { API_SERVER, FAVORITE_ITEMS_KEY, ROUTES } from '../../contants';
@@ -129,6 +129,7 @@ export const HomePage: FC = () => {
     if (favorites !== 'undefined' && favorites) {
       setFavoriteItems(JSON.parse(favorites));
     }
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
